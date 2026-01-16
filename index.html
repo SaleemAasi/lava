@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavaSlim: Scale Command</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #020205; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hud-font { font-family: 'Orbitron', sans-serif; }
+        #video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; object-fit: cover; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 24px; }
+        .glow-text-blue { text-shadow: 0 0 15px #00f2ff; color: #00f2ff; }
+        .glow-text-orange { text-shadow: 0 0 15px #ff4500; color: #ff4500; }
+        .scroll-indicator { animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+    </style>
+</head>
+<body>
+
+    <video autoplay muted loop playsinline id="video-bg">
+        <source src="/files/lava-bg.mp4" type="video/mp4">
+    </video>
+
+    <section class="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        <div class="absolute top-10 w-full flex justify-between px-12">
+            <img src="/files/lavaslim.jpeg" alt="LavaSlim" class="h-16">
+            <img src="/files/buygoods.png" alt="BuyGoods" class="h-10 opacity-70">
+        </div>
+
+        <div class="text-center">
+            <p class="hud-font glow-text-blue tracking-[0.3em] uppercase mb-4 text-sm">System Status: Verified #4 BuyGoods Offer</p>
+            <h1 class="hud-font text-6xl md:text-8xl font-black italic tracking-tighter mb-6 uppercase">Time To <span class="glow-text-orange">Scale</span></h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                The Legendary Eruption has begun. $100,000 in Galactic rewards are live for the world's top media buyers.
+            </p>
+            <div id="countdown" class="hud-font flex justify-center gap-12 text-3xl font-black mb-12">
+                <div><span id="days" class="block text-6xl glow-text-blue">00</span> DAYS</div>
+                <div><span id="hours" class="block text-6xl glow-text-blue">00</span> HRS</div>
+            </div>
+            <a href="#leaderboard" class="bg-white text-black hud-font font-black px-12 py-5 rounded-full text-xl hover:bg-cyan-400 transition-all uppercase italic">Initialize Protocol</a>
+        </div>
+        <div class="absolute bottom-10 scroll-indicator">▼ Scroll to Entry</div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="glass-panel p-10 text-center">
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Battle-Tested EPC</p>
+                <h3 class="hud-font text-5xl font-black glow-text-blue">$3.21</h3>
+            </div>
+            <div class="glass-panel p-10 text-center border-orange-500/30">
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Checkout Efficiency</p>
+                <h3 class="hud-font text-5xl font-black glow-text-orange">6.67%</h3>
+            </div>
+            <div class="glass-panel p-10 text-center">
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Current Ranking</p>
+                <h3 class="hud-font text-5xl font-black glow-text-blue">#4 TOP</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="leaderboard" class="py-32 px-6 bg-black/40">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="hud-font text-5xl font-black mb-16 uppercase">The Galactic <span class="glow-text-blue">Leaderboard</span></h2>
+            
+            <div class="space-y-4">
+                <div class="glass-panel p-8 flex justify-between items-center border-yellow-500/50">
+                    <span class="hud-font text-2xl font-black">1ST PLACE</span>
+                    <span class="hud-font text-4xl font-black glow-text-orange">$30,000</span>
+                </div>
+                <div class="glass-panel p-6 flex justify-between items-center">
+                    <span class="hud-font text-xl font-bold text-gray-400">2ND PLACE</span>
+                    <span class="hud-font text-3xl font-bold">$20,000</span>
+                </div>
+                <div class="glass-panel p-6 flex justify-between items-center">
+                    <span class="hud-font text-xl font-bold text-gray-400">3RD PLACE</span>
+                    <span class="hud-font text-3xl font-bold">$15,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="glass-panel p-10 border-cyan-500/20">
+                <h4 class="hud-font glow-text-blue font-black mb-4">WEEKEND WARRIOR BONUS</h4>
+                <p class="text-3xl font-black mb-2">$2,000 EVERY WEEKEND</p>
+                <p class="text-sm text-gray-400 font-mono italic">Requirement: 100+ Verified Sales (Fri-Sun)</p>
+            </div>
+            <div class="glass-panel p-10 border-cyan-500/20">
+                <h4 class="hud-font glow-text-blue font-black mb-4">VOLCANIC STRIKE (RANDOM)</h4>
+                <p class="text-3xl font-black mb-2">8 X $1,000 PRIZES</p>
+                <p class="text-sm text-gray-400 font-mono italic">Requirement: 60+ Lifetime Contest Sales</p>
+            </div>
+        </div>
+        <div class="mt-20 text-center">
+            <p class="text-xs text-gray-600 italic mb-10">*Top 5 ranking prizes require a minimum of 100 sales to qualify.</p>
+            <a href="YOUR_BUYGOODS_LINK" class="inline-block hud-font bg-cyan-500 text-black px-16 py-6 rounded-full font-black text-2xl uppercase tracking-tighter hover:scale-105 transition-transform">Get Your Links Now</a>
+        </div>
+    </section>
+
+    <script>
+        const target = new Date("Feb 1, 2026 00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = target - now;
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        }, 1000);
+    </script>
+</body>
+</html>
